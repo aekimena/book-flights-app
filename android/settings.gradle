@@ -1,6 +1,23 @@
+// pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
+// plugins { id("com.facebook.react.settings") }
+// extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+// rootProject.name = 'googleFlightsApp'
+// include ':app'
+// includeBuild('../node_modules/@react-native/gradle-plugin')
+
+
+
 pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
 plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+
+try {
+  extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+    ex.autolinkLibrariesFromCommand()
+  }
+} catch (Exception e) {
+  println("⚠️ Failed to autolink libraries via ReactSettingsExtension. Skipping in CI.")
+}
+
 rootProject.name = 'googleFlightsApp'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
