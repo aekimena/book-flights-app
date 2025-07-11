@@ -16,6 +16,7 @@ import { getMonthYearDate } from '../../utils/helpers';
 import { SelectClassSheet } from '../../bottomSheets/SelectClassSheet';
 import { SelectAdultsSheet } from '../../bottomSheets/SelectAdultsSheet';
 import { PriceGraph } from '../../components/flights/PriceGraph';
+import { showToast } from '../../utils/notifier';
 
 const ReturnFlights = ({
   route,
@@ -98,7 +99,7 @@ const ReturnFlights = ({
 
   useEffect(() => {
     if (isError) {
-      ToastAndroid.show('Something went wrong', ToastAndroid.BOTTOM);
+      showToast("Couldn't find returning flights.");
     }
   }, [isError]);
   return (

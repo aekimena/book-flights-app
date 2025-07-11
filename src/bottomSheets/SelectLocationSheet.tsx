@@ -11,6 +11,7 @@ import { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { Vspacer } from '../components/common/Vspacer';
 import { SearchAirportCard } from '../components/home/SearchAirportCard';
 import { SearchAirportResult } from '../types';
+import { showToast } from '../utils/notifier';
 
 export const SelectLocationSheet = forwardRef(
   (
@@ -28,8 +29,11 @@ export const SelectLocationSheet = forwardRef(
     });
 
     useEffect(() => {
-      console.log(data);
-    }, [data]);
+      if (isLoadingError) {
+        showToast("Couldn't find search query");
+      }
+    }, [isLoadingError]);
+
     return (
       <SheetContainer snapPoints={['80%']} ref={ref}>
         <>

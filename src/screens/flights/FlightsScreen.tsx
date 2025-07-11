@@ -20,6 +20,7 @@ import { SelectClassSheet } from '../../bottomSheets/SelectClassSheet';
 import { SelectAdultsSheet } from '../../bottomSheets/SelectAdultsSheet';
 import { PriceGraph } from '../../components/flights/PriceGraph';
 import { Vspacer } from '../../components/common/Vspacer';
+import { showToast } from '../../utils/notifier';
 
 const FlightsScreen = ({
   route,
@@ -90,7 +91,7 @@ const FlightsScreen = ({
 
   useEffect(() => {
     if (isError) {
-      ToastAndroid.show('Something went wrong', ToastAndroid.BOTTOM);
+      showToast("Couldn't find departing flights.");
     }
   }, [isError]);
   return (

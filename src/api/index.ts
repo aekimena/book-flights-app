@@ -47,5 +47,5 @@ export const getPriceCalender = async (params: {
   });
   console.log(data);
 
-  return data?.flights?.days; // to review later _ api limit reached
+  return data?.data?.flights?.days; // to review later _ api limit reached
 };
