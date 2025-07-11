@@ -46,18 +46,6 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x android/gradlew
 
-      - name: Clean node_modules and Gradle build
-        run: |
-          rm -rf node_modules
-          npm install
-          npm run postinstall || true  # Optional fallback to manually trigger if needed
-          cd android
-          ./gradlew clean
-
-      - name: Ensure npx is available
-        run: |
-          which npx || echo "npx not found"
-          npx --version || true
       - name: Build Android
         run: |
           cd android
