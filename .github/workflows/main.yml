@@ -50,12 +50,13 @@ jobs:
         run: |
           echo "y" | sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --install "ndk;27.1.12297006" "cmake;3.22.1"
 
-      - name: Clean node_modules and rebuild
+      - name: Clean node_modules and Gradle build
         run: |
           rm -rf node_modules
           npm install
           cd android
           ./gradlew clean
+
       - name: Build Android
         run: |
           cd android
