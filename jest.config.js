@@ -1,12 +1,14 @@
-// module.exports = {
-//   preset: 'react-native',
-// };
-
 module.exports = {
   preset: 'react-native',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transformIgnorePatterns: [
-    'node_modules/(?!(jest-)?react-native|@react-native|react-native-gesture-handler|@react-navigation)',
+    'node_modules/(?!(react-native|@react-native|@react-navigation|@react-native-community|react-native-reanimated|react-native-gesture-handler|react-native-gifted-charts|react-native-linear-gradient|gifted-charts-core)/)',
   ],
-  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
+  transform: {
+    '^.+\\.[jt]sx?$': 'babel-jest',
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  moduleNameMapper: {
+    '^react-native-gesture-handler$':
+      '<rootDir>/__mocks__/react-native-gesture-handler.js',
+  },
 };

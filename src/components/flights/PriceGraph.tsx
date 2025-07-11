@@ -106,6 +106,8 @@ export const PriceGraph = ({
               barWidth={20}
               height={250}
               hideRules={false}
+              showGradient={false}
+              gradientColor={undefined}
             />
           </View>
         </>
